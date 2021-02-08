@@ -1,4 +1,6 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -45,6 +47,12 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
+
+          <Link href="/memo">
+            <a>
+              <Image src="/images/share_img.png" width={200} height={200} />
+            </a>
+          </Link>
         </div>
       </main>
 
@@ -54,7 +62,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
@@ -182,6 +190,10 @@ export default function Home() {
           height: 1em;
         }
 
+        .navigation-button {
+          cursor: pointer;
+        }
+
         @media (max-width: 600px) {
           .grid {
             width: 100%;
@@ -205,5 +217,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
