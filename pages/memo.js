@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/memo.module.css";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import lcKey from "../lcKey.json";
 const AV = require("leancloud-storage");
 
@@ -10,7 +10,6 @@ AV.init({
   serverURL: lcKey.serverURL,
 });
 // const { Query, User } = AV;
-
 
 export default function Memo() {
   const heartRef = useRef(null);
@@ -40,7 +39,7 @@ export default function Memo() {
 
       <main className="p-4 box-border bg-bgWhite h-screen flex-1 flex items-center justify-center flex-col">
         <div
-          className="container rounded-full w-20 lg:w-24 h-20 lg:h-24 shadow-neu flex items-center cursor-pointer transition-all"
+          className="container rounded-full w-20 lg:w-24 h-20 lg:h-24 shadow-neu flex items-center cursor-pointer transition-all transform hover:shadow-pressed"
           onClick={onHeartClick}
           ref={heartRef}
         >
@@ -59,7 +58,7 @@ export default function Memo() {
             />
           </svg>
         </div>
-        {showCards && <div className="h-screen">many items...</div>}
+        {showCards && <div className="">many items...</div>}
       </main>
     </>
   );

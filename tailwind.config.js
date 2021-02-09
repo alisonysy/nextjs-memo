@@ -8,6 +8,7 @@ module.exports = {
     colors: {
       bgWhite: "#e0e5ec",
       heartRed: "#e22d48",
+      lightPink: "#ffb6c1",
     },
     fontFamily: {
       sans: ["Arial", "Microsoft YaHei", "黑体", "宋体", "sans-serif"],
