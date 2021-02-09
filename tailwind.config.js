@@ -15,13 +15,17 @@ module.exports = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "2rem",
+        DEFAULT: "1rem",
         sm: "1rem",
-        md: "2rem",
-        lg: "2rem",
-        xl: "3rem",
-        "2xl": "3rem",
+        md: "1.5rem",
+        lg: "1.5rem",
       },
+    },
+    boxShadow: {
+      neu:
+        "9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5)",
+      pressed:
+        "inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)",
     },
   },
   // ...
