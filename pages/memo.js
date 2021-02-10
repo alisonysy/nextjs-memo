@@ -1,15 +1,15 @@
 import Head from "next/head";
 import styles from "../styles/memo.module.css";
 import { useRef, useState, useEffect } from "react";
-import lcKey from "../lcKey.json";
+// import lcKey from "../lcKey.json";
 import DateItem from "../components/dateItem";
 const AV = require("leancloud-storage");
 var moment = require("moment");
 
 AV.init({
-  appId: lcKey.appId,
-  appKey: lcKey.appKey,
-  serverURL: lcKey.serverURL,
+  appId: process.env.APP_ID,
+  appKey: process.env.APP_KEY,
+  serverURL: process.env.SERVER_URL,
 });
 // const { Query, User } = AV;
 
