@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import {emojify} from 'react-emojione';
+import { useEffect } from "react";
 
 export default function Home() {
   return (
@@ -19,8 +17,6 @@ export default function Home() {
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
-
-        <p>{emojify('okkkk :smile:')}</p>
 
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
@@ -50,12 +46,6 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-
-          <Link href="/memo">
-            <a>
-              <Image src="/images/share_img.png" width={200} height={200} />
-            </a>
-          </Link>
         </div>
       </main>
 

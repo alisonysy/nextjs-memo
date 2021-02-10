@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import lcKey from "../lcKey.json";
 import DateItem from "../components/dateItem";
 const AV = require("leancloud-storage");
+var moment = require("moment");
 
 AV.init({
   appId: lcKey.appId,
@@ -43,6 +44,12 @@ export default function Memo() {
             ...item.attributes,
           };
         });
+        arr.sort((a, b) => {
+          if (moment(a.date).isBefore(b.date)) {
+            return -1;
+          }
+          return 1;
+        });
         setMemos(arr);
       }
     });
@@ -76,13 +83,14 @@ export default function Memo() {
           </svg>
         </div>
         {showCards && (
-          <div className="">
+          <div className="flex flex-row items-start flex-wrap justify-between mx-auto max-w-7xl mt-8">
             {memos.map((m) => (
               <DateItem
                 date={m.date}
                 picture={m.picture}
                 emoji={m.emoji}
                 content={m.content}
+                key={m.id}
               />
             ))}
           </div>

@@ -1,4 +1,15 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
-@tailwind utilities;
+/* @tailwind utilities; */
 
+@layer components {
+  .dateFont {
+    @apply text-2xl font-sans;
+    color: #a3b1c6;
+  }
+
+  .contentFont {
+    @apply text-base font-sans;
+    color: #748da9;
+  }
+}
