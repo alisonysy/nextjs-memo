@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/memo.module.css";
 import { useRef, useState, useEffect } from "react";
 import lcKey from "../lcKey.json";
+import DateItem from "../components/dateItem";
 const AV = require("leancloud-storage");
 
 AV.init({
@@ -16,6 +17,7 @@ export default function Memo() {
   const heartPath = useRef(null);
 
   const [showCards, setShowCards] = useState(false);
+  const [memos, setMemos] = useState([]);
 
   function onHeartClick() {
     if (heartRef.current) {
@@ -31,13 +33,28 @@ export default function Memo() {
     }
   }
 
+  useEffect(() => {
+    const query = new AV.Query("MemoTable");
+    query.find().then((res) => {
+      if (res && res.length) {
+        let arr = res.map((item) => {
+          return {
+            id: item.id,
+            ...item.attributes,
+          };
+        });
+        setMemos(arr);
+      }
+    });
+  }, []);
+
   return (
     <>
       <Head>
         <title>Memo</title>
       </Head>
 
-      <main className="p-4 box-border bg-bgWhite h-screen flex-1 flex items-center justify-center flex-col">
+      <main className="p-4 box-border bg-bgWhite min-h-screen h-full flex-1 flex items-center justify-center flex-col">
         <div
           className="container rounded-full w-20 lg:w-24 h-20 lg:h-24 shadow-neu flex items-center cursor-pointer transition-all transform hover:shadow-pressed"
           onClick={onHeartClick}
@@ -58,7 +75,18 @@ export default function Memo() {
             />
           </svg>
         </div>
-        {showCards && <div className="">many items...</div>}
+        {showCards && (
+          <div className="">
+            {memos.map((m) => (
+              <DateItem
+                date={m.date}
+                picture={m.picture}
+                emoji={m.emoji}
+                content={m.content}
+              />
+            ))}
+          </div>
+        )}
       </main>
     </>
   );
