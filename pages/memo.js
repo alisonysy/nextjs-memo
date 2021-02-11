@@ -74,7 +74,7 @@ export default function Memo() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="heart transition-colors"
+            className="heart transition-colors w-full"
             viewBox="0 0 362 327"
           >
             <path
