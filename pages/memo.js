@@ -1,26 +1,21 @@
 import Head from "next/head";
 import styles from "../styles/memo.module.css";
 import { useRef, useState, useEffect } from "react";
-// import lcKey from "../lcKey.json";
+import lcKey from "../lcKey.json";
 import DateItem from "../components/dateItem";
 const AV = require("leancloud-storage");
 var moment = require("moment");
 
-// AV.init({
-//   appId: lcKey.appId || process.env.APP_ID,
-//   appKey: lcKey.appKey || process.env.APP_KEY,
-//   serverURL: lcKey.serverURL || process.env.SERVER_URL,
-// });
-console.log(
-  "in production what is--",
-  process.env.APP_ID,
-  typeof process.env.APP_ID
-);
 AV.init({
-  appId: process.env.APP_ID,
-  appKey: process.env.APP_KEY,
-  serverURL: process.env.SERVER_URL,
+  appId: lcKey.appId || process.env.APP_ID,
+  appKey: lcKey.appKey || process.env.APP_KEY,
+  serverURL: lcKey.serverURL || process.env.SERVER_URL,
 });
+// AV.init({
+//   appId: process.env.APP_ID,
+//   appKey: process.env.APP_KEY,
+//   serverURL: process.env.SERVER_URL,
+// });
 // const { Query, User } = AV;
 
 export default function Memo() {
