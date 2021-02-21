@@ -46,6 +46,20 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
+
+          <a
+            href="https://www.tiny.cloud/docs/integrations/react/#tinymcereactintegrationquickstartguide"
+            className="card"
+          >
+            <h3>TinyMCEditor &rarr;</h3>
+            <p>
+              About editor used in the project. To upload local images in the
+              editor, use the{" "}
+              <a href="https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler">
+                images_upload_handler
+              </a>
+            </p>
+          </a>
         </div>
       </main>
 

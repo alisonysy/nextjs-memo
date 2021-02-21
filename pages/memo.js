@@ -2,7 +2,9 @@ import Head from "next/head";
 import styles from "../styles/memo.module.css";
 import { useRef, useState, useEffect } from "react";
 import lcKey from "../lcKey.json";
-import DateItem from "../components/dateItem";
+import DateItem from "../components/dateItem/dateItem";
+import Editor from "../components/editor/editor";
+
 const AV = require("leancloud-storage");
 var moment = require("moment");
 
@@ -87,6 +89,7 @@ export default function Memo() {
             />
           </svg>
         </div>
+        <Editor />
         {showCards && (
           <div className="flex flex-row items-start flex-wrap justify-between mx-auto max-w-7xl mt-8">
             {memos.map((m) => (

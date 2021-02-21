@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^3.10.2",
     "leancloud-storage": "^4.10.0",
     "moment": "^2.29.1",
     "next": "^10.0.0",
