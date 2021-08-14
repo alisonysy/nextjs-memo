@@ -1,9 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/memo.module.css";
 import { useRef, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import lcKey from "../lcKey.json";
 import DateItem from "../components/dateItem/dateItem";
-import Editor from "../components/editor/editor";
+// import Editor from "../components/editor/editor";
 
 const AV = require("leancloud-storage");
 var moment = require("moment");
@@ -12,6 +13,10 @@ AV.init({
   appId: lcKey.appId || process.env.APP_ID,
   appKey: lcKey.appKey || process.env.APP_KEY,
   serverURL: lcKey.serverURL || process.env.SERVER_URL,
+});
+
+const DynamicEditor = dynamic(() => import("../components/editor/editor"), {
+  ssr: false,
 });
 // AV.init({
 //   appId: process.env.APP_ID,
@@ -89,19 +94,21 @@ export default function Memo() {
             />
           </svg>
         </div>
-        <Editor />
         {showCards && (
-          <div className="flex flex-row items-start flex-wrap justify-between mx-auto max-w-7xl mt-8">
-            {memos.map((m) => (
-              <DateItem
-                date={m.date}
-                picture={m.picture}
-                emoji={m.emoji}
-                content={m.content}
-                key={m.id}
-              />
-            ))}
-          </div>
+          <>
+            <DynamicEditor />
+            <div className="flex flex-row items-start flex-wrap justify-between mx-auto max-w-7xl mt-8">
+              {memos.reverse().map((m) => (
+                <DateItem
+                  date={m.date}
+                  picture={m.picture}
+                  emoji={m.emoji}
+                  content={m.content}
+                  key={m.id}
+                />
+              ))}
+            </div>
+          </>
         )}
       </main>
     </>
